@@ -6,6 +6,12 @@
 #       and download rasterize.js
 # **************************************************************************
 # set the environment: these files as useful to save and use temporary datas
+
+# test if directories DATAS, HTML, IMAGES don't exist and create them
+if [ ! -d "DATAS" ]; then mkdir DATAS; fi
+if [ ! -d "HTMLS" ]; then mkdir HTMLS; fi
+if [ ! -d "IMAGES" ]; then mkdir IMAGES; fi
+
 if [ -e DATAS/wjson.json ]; then rm DATAS/wjson.json; fi
 if [ -e DATAS/dati.csv ]; then rm DATAS/dati.csv; fi
 if [ -e DATAS/finalDatas.csv ]; then rm DATAS/finalDatas.csv; fi
@@ -21,11 +27,6 @@ echo -e " Date Time Temp DewP Hum Cloud Rain WindS WindDir WindDirDeg Sky Press 
 
 # download of json datas and save the wjson file
 wget "http://ws1.metcheck.com/ENGINE/v9_0/json.asp?lat=$par&lon=$mer&lid=22553" 2>/dev/null -O - > DATAS/wjson.json
-
-# test if directories DATAS, HTML, IMAGES don't exist and create them
-if [ ! -d "DATAS" ]; then mkdir DATAS; fi
-if [ ! -d "HTMLS" ]; then mkdir HTMLS; fi
-if [ ! -d "IMAGES" ]; then mkdir IMAGES; fi
 
 # loop to obtain infos from the json file: here we use jq
 i=0
