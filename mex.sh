@@ -21,7 +21,7 @@ if [ -e DATAS/weatherForecast.csv ]; then rm DATAS/weatherForecast.csv; fi
 touch DATAS/wjson.json DATAS/dati.csv DATAS/finalDatas.csv
 
 # Obtain today date
-DATE=$(date +%d-%m-%Y)
+DATE=$(date +%d%m%Y)
 
 echo -e "Insert latitude and longitude (separated by space)"
 read par mer
@@ -46,7 +46,7 @@ sed -i '2d' DATAS/finalDatas.csv                                                
 cat DATAS/finalDatas.csv | cut -d' ' -f2- > DATAS/tmp.csv                           # temporary file to eliminate first cloumn
 cat DATAS/tmp.csv > DATAS/finalDatas.csv                                            # transfer in a new file
 head -74 DATAS/finalDatas.csv > DATAS/weatherForecast.csv                           # 74: only 3 days of forecasting - 116: for 5 days
-cp DATAS/weatherForecast.csv mexDATAS/weatherForecast_$DATE.csv
+cp DATAS/weatherForecast.csv mexDATAS/weatherForecast_$par-$mer-$DATE.csv           # Archive csv in mexDATAS
 awk 'BEGIN{FS=OFS=" "}{print $1,$2,$3,$4,$5,$6,$7,int($8*1.609),$9,$10,$11,$12,$13,$14,$15,$16,$17,$18 }' DATAS/weatherForecast.csv > DATAS/tmp.csv  # convert wind power from miles/h to km/h
 sed -i 's/n 0 W/n WindS W/g' DATAS/tmp.csv                                          # column from 0 to WindS
 cat DATAS/tmp.csv > DATAS/weatherForecast.csv
