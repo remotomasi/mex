@@ -15,7 +15,7 @@ set ytics 500
 set yrange [0:5000]
 set ylabel 'm'
 set y2tics 10
-set y2range [980:1030]
+set y2range [980:1040]
 set y2label 'hPa'
 
 set title "Weather Forecast by Metcheck and Remo Tomasi"
