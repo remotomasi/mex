@@ -18,7 +18,7 @@ set yrange [0:360]
 set y2label 'Km/h'
 set ylabel font ", 15"
 set y2tics 10
-set y2range [0:50]
+set y2range [0:60]
 
 set title "Weather Forecast by Metcheck and Remo Tomasi"
 set key lmargin
