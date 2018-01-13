@@ -2,7 +2,7 @@
 Weather Forecast based on metcheck datas
 
 ### Prerequisites
-
+We need to install
 * jq
 * xvfb
 * gnuplot 
