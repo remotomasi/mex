@@ -20,4 +20,4 @@ Every sh and pg file must have the following grants: 755.
 
 ## License
 
-This project is licensed under the CC BY-NC-SA License - see the [Licence Deed](https://creativecommons.org/licenses/by-nc/4.0/) file for details
+This project is licensed under the AGPL 3.0
