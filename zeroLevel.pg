@@ -7,7 +7,7 @@ set datafile separator " "
 set xdata time
 set timefmt "%Y-%m-%d %H"
 #set xrange [time(0):time(0) + 3*24*60*60]
-set format x "h%H\n%d/%m/%y\n%a"
+set format x "h%H\n%d/%m\n%a"
 set xlabel "Time"
 set xtics font ", 10"
 
