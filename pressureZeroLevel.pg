@@ -26,6 +26,6 @@ set size 1, 1 # ratio 1:1
 
 set style data lines
 
-plot "DATAS/weatherForecast.csv"  using 1:18 title "ZeroLevel", \
-"" using 1:12 title "Pressure" axes x1y2
+plot "DATAS/weatherForecast.csv"  using 1:18 title "0Lev", \
+"" using 1:12 title "Pres" axes x1y2
 #

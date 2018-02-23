@@ -20,6 +20,7 @@ set y2label 'mm/h'
 
 set title "Weather Forecast by Metcheck and Remo Tomasi"
 set key lmargin
+set key font ",10"
 set grid
 set size 1, 1 # ratio 1:1
 
@@ -31,6 +32,6 @@ plot "DATAS/weatherForecast.csv" using 1:3 title "Temp", \
 "" using 1:6 title "Cloud", \
 "" using 1:7 title "Rain" axes x1y2  w l lc "green", \
 "" using 1:8 title "Wind", \
-"" using 1:16 title "ChanceRain", \
-"" using 1:17 title "ChanceSnow"
+"" using 1:16 title "%Rai", \
+"" using 1:17 title "%Sno"
 #
