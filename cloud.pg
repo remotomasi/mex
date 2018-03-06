@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 reset
 set terminal png
-set term png size 800,600 #800 pixels by 600 pixels
+set term png size 1024,600 #800 pixels by 600 pixels
 
 set datafile separator " "
 set xdata time

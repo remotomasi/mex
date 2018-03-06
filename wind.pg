@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 reset
 set terminal png
-set term png size 800,600 #800 pixels by 600 pixels
+set term png size 1024,600 #800 pixels by 600 pixels
 
 set datafile separator " "
 set xdata time
@@ -11,7 +11,7 @@ set format x "h%H\n%d/%m\n%a"
 set xlabel "Time"
 set xtics font ", 10"
 
-set ylabel "N               E               S               W               N"
+set ylabel "N               E                S              W               N"
 set ylabel font ", 15"
 set ytics 90
 set yrange [0:360]

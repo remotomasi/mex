@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 reset
 set terminal png
-set term png size 800,600 #800 pixels by 600 pixels
+set term png size 1024,600 #800 pixels by 600 pixels
 
 set datafile separator " "
 set xdata time
@@ -11,12 +11,12 @@ set format x "h%H\n%d/%m\n%a"
 set xlabel "Time"
 set xtics font ", 10"
 
-set ytics 500
-set yrange [0:5000]
-set ylabel 'm'
-set y2tics 10
-set y2range [980:1040]
-set y2label 'hPa'
+set ytics 10
+set yrange [980:1040]
+set ylabel 'hPa'
+set y2tics 500
+set y2range [0:5000]
+set y2label 'm'
 
 set title "Weather Forecast by Metcheck and Remo Tomasi"
 set key lmargin
@@ -26,6 +26,6 @@ set size 1, 1 # ratio 1:1
 
 set style data lines
 
-plot "DATAS/weatherForecast.csv"  using 1:18 title "0Lev", \
-"" using 1:12 title "Pres" axes x1y2
+plot "DATAS/weatherForecast.csv"  using 1:12 title "Pres", \
+"" using 1:18 title "ZLev" axes x1y2
 #
