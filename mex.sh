@@ -63,5 +63,5 @@ xvfb-run --server-args="-screen 0, 1024x768x24" cutycapt --url=file://$PWD/HTMLS
 ./zeroTempDP.pg > IMAGES/weatherForecastZTDP.png                           # graph wind direction/power
 # final image composition of the 3 previous graphs
 # convert weatherForecastGraph.png weatherForecastCloud.png weatherForecastPressure.png +append weatherForecastFinal.png
-convert \( IMAGES/weatherForecastGraph.png IMAGES/weatherForecastRain.png -append \) \( IMAGES/weatherForecastCloud.png IMAGES/weatherForecastPressureZeroLevel.png -append \) \( IMAGES/weatherForecastWind.png IMAGES/weatherForecastTempDewPoint.png -append \) \( IMAGES/weatherForecastPressureWind.png -append \) +append IMAGES/weatherForecastFinal.png
+convert \( IMAGES/weatherForecastGraph.png IMAGES/weatherForecastRain.png -append \) \( IMAGES/weatherForecastCloud.png IMAGES/weatherForecastPressureZeroLevel.png -append \) \( IMAGES/weatherForecastWind.png IMAGES/weatherForecastZTDP.png -append \) \( IMAGES/weatherForecastPressureWind.png -append \) +append IMAGES/weatherForecastFinal.png
 rm DATAS/tmp.csv  # remove temporary or useless files
