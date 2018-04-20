@@ -23,7 +23,7 @@ set size 1, 1 # ratio 1:1
 
 set style data lines
 
-plot "DATAS/weatherForecast.csv" using 1:6 title "Total" lw 5 lt 2 lc "yellow", \
+plot "DATAS/weatherForecast.csv" using 1:6 title "Total" lw 5 lt 2 lc "purple", \
 "" using 1:15 title "High", \
 "" using 1:14 title "Med", \
 "" using 1:13 title "Low"
