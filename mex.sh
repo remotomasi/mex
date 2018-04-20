@@ -23,7 +23,7 @@ touch DATAS/wjson.json DATAS/dati.csv DATAS/finalDatas.csv
 # Obtain today date
 DATE=$(date +%d%m%Y)
 
-echo -e "Insert latitude and longitude (separated by space)"
+echo -e "Insert latitude and longitude (separated by spaces, i.e.: 60.32 21.03)"
 read par mer
 
 # creation of the first line (columns)
