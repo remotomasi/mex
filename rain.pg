@@ -25,8 +25,10 @@ set grid
 set size 1, 1 # ratio 1:1
 
 set style data lines
+set boxwidth 0.95 relative
+set style fill transparent solid 0.5 noborder
 
-plot "DATAS/weatherForecast.csv" using 1:7 title "Rain", \
-"" using 1:16 title "%Ra" axes x1y2, \
-"" using 1:17 title "%Sn" axes x1y2
+plot "DATAS/weatherForecast.csv" using 1:7 w boxes lc "blue" title "Rain", \
+"" using 1:16 lc "red" title "%Ra" axes x1y2, \
+"" using 1:17 lc "purple" title "%Sn" axes x1y2
 #
