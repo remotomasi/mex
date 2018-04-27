@@ -6,7 +6,7 @@ set term png size 1024,600 #800 pixels by 600 pixels
 set datafile separator " "
 set xdata time
 set timefmt "%Y-%m-%d %H"
-#set xrange [time(0):time(0) + 3*24*60*60]
+set xrange [time(0):time(0) + 5*24*60*60]
 set format x "h%H\n%d/%m\n%a"
 set xlabel "Time"
 set xtics font ", 10"
