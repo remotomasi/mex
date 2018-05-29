@@ -45,11 +45,12 @@ cat DATAS/dati.csv | tr '\n' ',' | tr '\t' '\n' | tr ',' '\t' | sed 's/:00:00.00
 sed -i '2d' DATAS/finalDatas.csv                                                    # first two lines
 cat DATAS/finalDatas.csv | cut -d' ' -f2- > DATAS/tmp.csv                           # temporary file to eliminate first cloumn
 cat DATAS/tmp.csv > DATAS/finalDatas.csv                                            # transfer in a new file
-head -116 DATAS/finalDatas.csv > DATAS/weatherForecast.csv                           # 74: only 3 days of forecasting - 116: for 5 days
+head -116 DATAS/finalDatas.csv > DATAS/weatherForecast.csv                          # 74: only 3 days of forecasting - 116: for 5 days
 cp DATAS/weatherForecast.csv mexDATAS/weatherForecast_$par-$mer-$DATE.csv           # Archive csv in mexDATAS
 awk 'BEGIN{FS=OFS=" "}{print $1,$2,$3,$4,$5,$6,$7,int($8*1.609),$9,$10,$11,$12,$13,$14,$15,$16,$17,$18 }' DATAS/weatherForecast.csv > DATAS/tmp.csv  # convert wind power from miles/h to km/h
 sed -i 's/n 0 W/n WindS W/g' DATAS/tmp.csv                                          # column from 0 to WindS
 cat DATAS/tmp.csv > DATAS/weatherForecast.csv
+awk '{ print $0, NR }' DATAS/tmp.csv > DATAS/weatherForecast.csv  # adding number of the line at the end of each line
 echo "Data file downloaded and formatted..."
 ./conv2htm.sh DATAS/weatherForecast.csv > HTMLS/weatherForecast.html                # csv to html conversion
 xvfb-run --server-args="-screen 0, 1024x768x24" cutycapt --url=file://$PWD/HTMLS/weatherForecast.html --out=IMAGES/weatherForecastData.png

@@ -22,5 +22,5 @@ set size 1, 1 # ratio 1:1
 
 set style data lines
 
-plot "DATAS/weatherForecast.csv" using 1:17 title "ZeroLevel"
+plot "DATAS/weatherForecast.csv" using 1:17 lc "orange" title "ZeroLevel"
 #

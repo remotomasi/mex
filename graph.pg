@@ -2,6 +2,7 @@
 reset
 set terminal png
 set term png size 1024,600 #800 pixels by 600 pixels
+set angle degrees
 
 set datafile separator " "
 set xdata time
@@ -11,11 +12,14 @@ set format x "h%H\n%d/%m\n%a"
 set xlabel "Time"
 set xtics font ", 10"
 
+set x2tics 10
+set x2range [0:50]
+
 set ylabel "Values"
-set ytics 5
-set yrange [-5:100]
+set ytics 10
+set yrange [0:100]
 set y2tics 1
-set y2range [-0.25:5]
+set y2range [0:5]
 set y2label 'mm/h'
 
 set title "Weather Forecast by Metcheck and Remo Tomasi"
@@ -25,13 +29,16 @@ set grid
 set size 1, 1 # ratio 1:1
 
 set style data lines
+set bars small
 
-plot "DATAS/weatherForecast.csv" using 1:3 title "Temp", \
+plot "DATAS/weatherForecast.csv" u 1:3:($3 - 5):3 w errorlines ls 1 pt 0 lt 1 lc rgb "red" ti "Temp", \
 "" using 1:4 title "DewP", \
 "" using 1:5 title "Hum", \
-"" using 1:6 title "Cloud", \
-"" using 1:7 title "Rain" axes x1y2  w l lc "green", \
-"" using 1:8 title "Wind", \
-"" using 1:16 title "%Rai", \
-"" using 1:17 title "%Sno"
+"" using 1:6 lc "purple" lw 2 title "Cloud", \
+"" using 1:7 w boxes lc "blue" fs solid border -1 title "Rain" axes x1y2, \
+"" using 1:8 lc "dark-green" title "Wind", \
+"" using 1:16 lc "orange" title "%Rai", \
+"" using 1:17 title "%Sno", \
+"" using 19:(95):(0.48):(90-0.01*$6*359):(90) w circ lc rgb "brown" fs solid notitle axes x2y1, \
+"" using 19:(95):(0.48) w circ lc rgb "black" axes x2y1 t "Cloud"
 #

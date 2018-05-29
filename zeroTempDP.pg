@@ -25,8 +25,9 @@ set grid
 set size 1, 1 # ratio 1:1
 
 set style data lines
+set bars small
 
-plot "DATAS/weatherForecast.csv" using 1:3 title "Temp" axes x1y2, \
-"" using 1:4 title "DewP" axes x1y2, \
-"" using 1:18 title "0Lev" axes x1y1 lc "red"
+plot "DATAS/weatherForecast.csv" u 1:3:($3 - 5):3 w errorlines ls 1 pt 0 lt 1 lc rgb "red" axes x1y2 ti "Temp", \
+"" using 1:4 title "DewP" axes x1y2 lc "dark-green", \
+"" using 1:18 title "0Lev" axes x1y1 lc "orange"
 #

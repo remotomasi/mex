@@ -27,5 +27,5 @@ set size 1, 1 # ratio 1:1
 set style data lines
 
 plot "DATAS/weatherForecast.csv" using 1:12 title "Pres", \
-"" using 1:8 title "Wind" axes x1y2
+"" using 1:8 lc "dark-green" title "Wind" axes x1y2
 #
