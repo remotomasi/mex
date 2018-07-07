@@ -6,7 +6,7 @@ set term png size 1024,600 #800 pixels by 600 pixels
 set datafile separator " "
 set xdata time
 set timefmt "%Y-%m-%d %H"
-set xrange [time(0):time(0) + 5*24*60*60]
+set xrange [time(0):time(0) + dd*24*60*60]
 set format x "h%H\n%d/%m\n%a"
 set xlabel "Time"
 set xtics font ", 10"
@@ -24,4 +24,4 @@ set size 1, 1 # ratio 1:1
 set style data lines
 
 plot "DATAS/weatherForecast.csv" using 1:3 title "Temp", \
-"" using 1:4 title "DewP"
+"" using 1:4 title "DewP" lc "#C71585"

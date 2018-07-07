@@ -23,8 +23,8 @@ touch DATAS/wjson.json DATAS/dati.csv DATAS/finalDatas.csv
 # Obtain today date
 DATE=$(date +%d%m%Y)
 
-echo -e "Insert latitude and longitude (separated by spaces, i.e.: 60.32 21.03)"
-read par mer
+echo -e "Insert latitude, longitude and forecast days (separated by spaces, i.e.: 60.32 21.03 5)"
+read par mer days
 
 # creation of the first line (columns)
 echo -e " Date Time Temp DewP Hum Cloud Rain WindS WindDir WindDirDeg Sky Press Low Med High ChanceRain ChanceSnow ZeroLevel" > DATAS/finalDatas.csv
@@ -54,14 +54,14 @@ awk '{ print $0, NR }' DATAS/tmp.csv > DATAS/weatherForecast.csv  # adding numbe
 echo "Data file downloaded and formatted..."
 ./conv2htm.sh DATAS/weatherForecast.csv > HTMLS/weatherForecast.html                # csv to html conversion
 xvfb-run --server-args="-screen 0, 1024x768x24" cutycapt --url=file://$PWD/HTMLS/weatherForecast.html --out=IMAGES/weatherForecastData.png
-./graph.pg > IMAGES/weatherForecastGraph.png                                   # creating graph by gnuplot
-./cloud.pg > IMAGES/weatherForecastCloud.png                                   # graph for clouds
-./rain.pg > IMAGES/weatherForecastRain.png                                     # graph for rain
-./pressureWind.pg > IMAGES/weatherForecastPressureWind.png                     # graph pressure/wind
-./pressureZeroLevel.pg > IMAGES/weatherForecastPressureZeroLevel.png           # graph pressure/zerolevel
-./tempDewPoint.pg > IMAGES/weatherForecastTempDewPoint.png                     # graph pressure/zerolevel
-./wind.pg > IMAGES/weatherForecastWind.png                                 # graph pressure/zerolevel
-./zeroTempDP.pg > IMAGES/weatherForecastZTDP.png                           # graph wind direction/power
+gnuplot -e "dd=$days" ./graph.pg > IMAGES/weatherForecastGraph.png                                   # creating graph by gnuplot
+gnuplot -e "dd=$days" ./cloud.pg > IMAGES/weatherForecastCloud.png                                   # graph for clouds
+gnuplot -e "dd=$days" ./rain.pg > IMAGES/weatherForecastRain.png                                     # graph for rain
+gnuplot -e "dd=$days" ./pressureWind.pg > IMAGES/weatherForecastPressureWind.png                     # graph pressure/wind
+gnuplot -e "dd=$days" ./pressureZeroLevel.pg > IMAGES/weatherForecastPressureZeroLevel.png           # graph pressure/zerolevel
+gnuplot -e "dd=$days" ./tempDewPoint.pg > IMAGES/weatherForecastTempDewPoint.png                     # graph pressure/zerolevel
+gnuplot -e "dd=$days" ./wind.pg > IMAGES/weatherForecastWind.png                                 # graph pressure/zerolevel
+gnuplot -e "dd=$days" ./zeroTempDP.pg > IMAGES/weatherForecastZTDP.png                           # graph wind direction/power
 # final image composition of the 3 previous graphs
 # convert weatherForecastGraph.png weatherForecastCloud.png weatherForecastPressure.png +append weatherForecastFinal.png
 convert \( IMAGES/weatherForecastGraph.png IMAGES/weatherForecastRain.png -append \) \( IMAGES/weatherForecastCloud.png IMAGES/weatherForecastPressureZeroLevel.png -append \) \( IMAGES/weatherForecastWind.png IMAGES/weatherForecastZTDP.png -append \) \( IMAGES/weatherForecastPressureWind.png -append \) +append IMAGES/weatherForecastFinal.png
